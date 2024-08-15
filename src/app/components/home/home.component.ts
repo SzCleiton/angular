@@ -1,6 +1,7 @@
 import { Component, signal } from '@angular/core';
 import { FooterModule } from '../footer/footer.module';
 import { CommonModule } from '@angular/common';
+import { HelloWorldService } from '../../services/hello-world.service';
 
 @Component({
   selector: 'app-home',
@@ -17,6 +18,22 @@ export class HomeComponent {
   pacManUrl = "https://upload.wikimedia.org/wikipedia/commons/0/06/Pac_Man.svg";
 
   lista = ["fernanda", "cleiton", "joao", "maria"];
+
+  constructor(private service: HelloWorldService) {
+    this.service.getHelloWorld().subscribe(
+      {
+        next: (data) => {
+          console.log(data);
+        },
+        error: (error) => {
+          console.log(error);
+        },
+        complete: () => {
+          console.log("finalizou");
+        }
+      }
+    )
+  }
 
   // constructor() {
   //   setInterval(() => {
