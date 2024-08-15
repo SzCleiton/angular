@@ -7,3 +7,24 @@
 <button  (click)="teste()">clique em mim</button>
 
 <input type="text" (change)="teste()" />
+
+<!-- *ngIf -->
+@if(value) {
+  <h2>o valor é true</h2>
+} @else if (count == 2) {
+  <h2>o numero é dois</h2>
+}
+
+<h2 *ngIf="value">o valor é true</h2>
+
+
+@for(item of lista; track item) {
+  <p>{{ item }}</p>
+} @empty {
+  <P>vazio!!</P>
+}
+
+<div *ngFor="let item of lista">
+  <p>{{ item }}</p>
+</div>
+<h2 *ngIf="lista.length == 0">a lista é vazia</h2>
